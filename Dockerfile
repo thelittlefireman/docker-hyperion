@@ -14,4 +14,4 @@ rm ./install_hyperion.sh
 #Allow ssh for hyperCon
 EXPOSE 22
 
-CMD /usr/bin/hyperiond /hyperion/hyperion.config.json
+CMD ["nohup /usr/sbin/sshd -D 2>$1 & nohup /usr/bin/hyperiond /hyperion/hyperion.config.json 2>$1 & tail -f nohup*.out"]
